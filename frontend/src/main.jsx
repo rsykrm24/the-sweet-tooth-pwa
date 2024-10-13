@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import './index.css'
 import Loading from "./pages/Loading.jsx"
 import Dashboard from "./pages/Dashboard.jsx"
+import Bakery from "./pages/Bakery.jsx"
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path:"/dashboard",
     element:<Dashboard/>
+  },
+  {
+    path:"/bakery/:id",
+    element:<Bakery/>
   }])
 
 createRoot(document.getElementById('root')).render(
