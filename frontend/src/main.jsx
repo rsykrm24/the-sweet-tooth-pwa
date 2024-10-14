@@ -6,6 +6,8 @@ import './index.css'
 import Loading from "./pages/Loading.jsx"
 import Dashboard from "./pages/Dashboard.jsx"
 import Bakery from "./pages/Bakery.jsx"
+import Login from "./pages/Login.jsx"
+import Register from "./pages/Register.jsx"
 
 const router = createBrowserRouter([
   {
@@ -13,12 +15,20 @@ const router = createBrowserRouter([
     element:<Loading/>
   },
   {
-    path:"/dashboard",
+    path:"/home",
     element:<Dashboard/>
   },
   {
     path:"/bakery/:id",
     element:<Bakery/>
+  },
+  {
+    path:"/login",
+    element:<Login/>
+  },
+  {
+    path:"/register",
+    element:<Register/>
   }])
 
 createRoot(document.getElementById('root')).render(
