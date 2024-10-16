@@ -1,6 +1,7 @@
 import LoginForm from "../components/login/LoginForm.jsx"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 export default function Login() {
   let route = useNavigate()
@@ -8,9 +9,21 @@ export default function Login() {
   let [password, setPassword] = useState("")
   function submit(e) {
     e.preventDefault()
-    if(email != "" || password != "") {
+    axios.post("http://localhost:3000/login",{
+      email:email,
+      password:password
+    })
+    .then(res => {
       route("/home")
-    }
+      let data = JSON.stringify({
+        name:res.data.data.name, 
+        email:res.data.data.email, 
+        password:res.data.data.password, 
+        cart:res.data.data.cart
+      })
+      localStorage.setItem("data",data)
+    })
+    .catch(err => console.log({email,password}))
   }
   return(
     <div className="h-screen">

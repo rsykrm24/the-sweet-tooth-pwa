@@ -8,6 +8,7 @@ import All from "../assets/nY9pZEspe728e0triCmUHGELG5vfffoqEumy0BBvdSiHe5h5E.jpg
 import Cake from "../assets/KEb33vF4fqWGUyaj6qIP3Xo3PjI3zeYJlVmVRPaDpWLboHmTA.jpg"
 import Cookies from "../assets/qShRixJoR7YvL5FWZmWzCDsryZoNkv1t9EGsWLmAzlML6h5E.jpg"
 import Bread from "../assets/aIdciyLBHKLUJVFWbctM7Tz2PSiF8fMabv1gCvtqvDoE0DzJA.jpg"
+import { useNavigate } from "react-router-dom"
 
 export default function Dashboard() {
   let [input, setInput] = useState("")
@@ -17,6 +18,9 @@ export default function Dashboard() {
   let [bread, setBread] = useState(0)
   let [cake, setCake] = useState(0)
   let [alertInput, setAlertInput] = useState(false)
+  let [dataUser,setDataUser] = useState("")
+  let route = useNavigate()
+  
   function submit(e) {
     e.preventDefault()
     if(input == "") {
@@ -72,16 +76,22 @@ export default function Dashboard() {
     .catch(err => setData([]))
   }
   useEffect(() => {
-    axios.get("http://localhost:3000/bakery")
-    .then(res => {
-      setData(res.data.data)
-      setAll(2)
-    })
-    .catch(err => setData([]))
+    if(localStorage.getItem("data") == null) {
+      route("/login")
+    }
+    else {
+      setDataUser(JSON.parse(localStorage.getItem("data")))
+      axios.get("http://localhost:3000/bakery")
+      .then(res => {
+        setData(res.data.data)
+        setAll(2)
+      })
+      .catch(err => setData([]))
+      }
   },[])
   return (
     <div className="bg-orange-900">
-      <HelloUser user={"Ahmeng"}/>
+      <HelloUser user={dataUser.name}/>
       <div className="rounded-t-xl bg-white p-2">
         <Search value={input} change={e => setInput(e.target.value)} func={submit}/>
         {

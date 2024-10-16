@@ -25,7 +25,7 @@ export default function LoginForm(props) {
       <div className="flex justify-end">
         <span className="font-[Nunito] text-orange-900">Forgot password</span>
       </div>
-      <button type="submit" className={(props.email == "" || props.password == "") ? `bg-white py-1 text-orange-900 border-2 border-orange-900 rounded font-[Nunito] font-bold` : `bg-orange-900 py-1 text-white rounded font-[Nunito] font-bold border-2 border-orange-900`}>Sign In</button>
+      <button type="submit" className={`bg-orange-900 py-1 text-white rounded font-[Nunito] font-bold border-2 border-orange-900`}>Sign In</button>
     </form>
     )
 }
