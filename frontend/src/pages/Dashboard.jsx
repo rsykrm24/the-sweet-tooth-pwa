@@ -86,7 +86,7 @@ export default function Dashboard() {
         setData(res.data.data)
         setAll(2)
       })
-      .catch(err => setData([]))
+      .catch(err => route("/login"))
       }
   },[])
   return (

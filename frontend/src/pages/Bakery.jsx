@@ -21,7 +21,7 @@ export default function Bakery() {
     <div className="h-screen flex flex-col">
       {/* Sticky header */}
       <div className="bg-orange-900 p-4 sticky w-full z-30 top-0">
-        <button onClick={() => route("/dashboard")}>
+        <button onClick={() => route("/home")}>
           <ArrowBackIcon sx={{color:brown[50]}} />
         </button>
       </div>

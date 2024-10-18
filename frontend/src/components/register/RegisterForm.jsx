@@ -22,7 +22,7 @@ export default function RegisterForm(props) {
   }, [props.password, props.retype]) // Menjalankan efek ini setiap kali password atau retype berubah
 
   return (
-    <form className="flex flex-col gap-7 mt-16" onSubmit={props.submit}>
+    <form className="flex flex-col gap-7 mt-7" onSubmit={props.submit}>
       {/* Nama */}
       <input
         type="text"

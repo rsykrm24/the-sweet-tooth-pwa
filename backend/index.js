@@ -10,6 +10,8 @@ import registerUser from "./route/user/registerUser.js"
 import loginUser from './route/user/loginUser.js'
 import updateCart from './route/user/updateCartUser.js'
 import updatePassword from './route/user/updatePasswordUser.js'
+import getUser from './route/user/getUser.js'
+import payment from './route/payment/payment.js'
 
 let app = express()
 let port = process.env.PORT
@@ -28,6 +30,8 @@ app.use(registerUser)
 app.use(loginUser)
 app.use(updateCart)
 app.use(updatePassword)
+app.use(getUser)
+app.use(payment)
 
 app.use("*",(req,res) => {
   res.status(500).json({status:500,message:"Endpoint not found"})
