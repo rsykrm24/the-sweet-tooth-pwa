@@ -17,7 +17,7 @@ export default function Profile() {
     <div className="h-screen">
       <Navbar />
       <div className="flex justify-center h-2/3">
-        <Bio name={data.name} email={window.atob((data.email == null) ? "" : data.email)}/>
+        <Bio name={(data.name != null)  ? window.atob(data.name) : ""} email={window.atob((data.email == null) ? "" : data.email)}/>
       </div>
       <div className="w-full flex justify-center">
         <button className="bg-orange-900 font-bold text-xl font-[Nunito] text-white rounded py-1 px-10" onClick={logout}>Log out</button>

@@ -8,7 +8,6 @@ import getDataBakeryBySearch from "./route/bakery/getDataBySearch.js"
 import mongoose from "mongoose"
 import registerUser from "./route/user/registerUser.js"
 import loginUser from './route/user/loginUser.js'
-import updateCart from './route/user/updateCartUser.js'
 import updatePassword from './route/user/updatePasswordUser.js'
 import getUser from './route/user/getUser.js'
 import payment from './route/payment/payment.js'
@@ -28,7 +27,6 @@ app.use(getDataBakeryById)
 app.use(getDataBakeryBySearch)
 app.use(registerUser)
 app.use(loginUser)
-app.use(updateCart)
 app.use(updatePassword)
 app.use(getUser)
 app.use(payment)

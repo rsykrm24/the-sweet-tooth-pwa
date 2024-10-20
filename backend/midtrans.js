@@ -1,10 +1,9 @@
 import midtransClient from 'midtrans-client';
 import "dotenv/config"
 
-let core = new midtransClient.CoreApi({
+let snap = new midtransClient.Snap({
   isProduction : false,
-  serverKey : process.env.MIDTRANS_SERVERKEY,
-  clientKey : process.env.MIDTRANS_CLIENTKEY
+  serverKey : process.env.MIDTRANS_SERVERKEY
 });
 
-export default core 
+export default snap 

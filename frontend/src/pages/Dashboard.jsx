@@ -91,7 +91,7 @@ export default function Dashboard() {
   },[])
   return (
     <div className="bg-orange-900">
-      <HelloUser user={dataUser.name}/>
+      <HelloUser user={(dataUser.name) ? window.atob(dataUser.name) : ""}/>
       <div className="rounded-t-xl bg-white p-2">
         <Search value={input} change={e => setInput(e.target.value)} func={submit}/>
         {

@@ -1,7 +1,8 @@
 import RegisterForm from "../components/register/RegisterForm.jsx"
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
+import RegisterSuccess from "../components/register/RegisterSuccess.jsx"
 
 export default function Register() {
   let route = useNavigate()
@@ -10,16 +11,27 @@ export default function Register() {
   let [name, setName] = useState("")
   let [retype, setRetype] = useState("")
   let [emailExist, setEmailExist] = useState(false)
+  let [success, setSuccess] = useState("top-[-1000px]")
+  let [dataUser, setDataUser] = useState("")
+  
+  useEffect(() => {
+    setDataUser(JSON.parse(localStorage.getItem("data")))
+    axios.post("http://localhost:3000/login",{
+      email:dataUser?.email,
+      password:dataUser?.password 
+    })
+    .then(res => route("/home"))
+  },[])
   
   function submit(e) {
     e.preventDefault()
     axios.post("http://localhost:3000/register",{
-      name:name, 
+      name:window.btoa(name), 
       email:window.btoa(email),
       password:window.btoa(password),
       cart:""
     })
-    .then(res => route("/login"))
+    .then(res => setSuccess("top-10"))
     .catch(err => {
       if(err.response.data.message == "Email telah terdaftar") {
         setEmailExist(true)
@@ -40,6 +52,7 @@ export default function Register() {
       <div className="mt-7 font-[Nunito]">
         <p className="text-center">Have an account ? Sign in <span className="text-orange-900" onClick={() => route("/login")}>here</span></p>
       </div>
+      <RegisterSuccess topClass={success}/>
     </div>
     )
 }
