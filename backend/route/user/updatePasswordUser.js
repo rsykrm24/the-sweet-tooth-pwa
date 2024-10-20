@@ -1,5 +1,5 @@
 import express from "express"
-import schema from "../../schema.js"
+import schema from "../../libs/schema.js"
 
 const route = express.Router()
 

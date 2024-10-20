@@ -1,5 +1,5 @@
 import express from "express"
-import supabase from "../../supabase.js"
+import supabase from "../../libs/supabase.js"
 
 let route = express.Router()
 

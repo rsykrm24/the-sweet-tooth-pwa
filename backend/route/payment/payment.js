@@ -1,6 +1,6 @@
 import express from "express"
-import snap from "../../midtrans.js"
-import { parameter } from "../../parameter.js"
+import snap from "../../libs/midtrans.js"
+import { parameter } from "../../libs/parameter.js"
 
 const route = express.Router()
 
